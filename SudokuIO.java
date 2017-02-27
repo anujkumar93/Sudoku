@@ -42,6 +42,7 @@ public class SudokuIO {
           }
         }
       }
+      Sudoku_AC3.runAC3(vars, varDomain);
      
       file.close();
     }
