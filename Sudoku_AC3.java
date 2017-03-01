@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class Sudoku_AC3 {
-	public static boolean runAC3(int[] vars, boolean[][] varDomain){
+	public static boolean runAC3(boolean[][] varDomain){
 		ArrayList<HashMap<Integer,Integer>> constraintList= buildConstraints(-1,-1);
 		int x_i=-1, x_j=-1;
 		while (!constraintList.isEmpty()){
@@ -12,7 +12,7 @@ public class Sudoku_AC3 {
 				x_i=key;
 				x_j=currentConstraint.get(key);
 			}
-			if (revise(vars,varDomain,currentConstraint)){
+			if (revise(varDomain,currentConstraint)){
 				boolean domainExists=false;
 				for (int i=0; i<9; i++){
 					if (varDomain[x_i][i]) domainExists=true;
@@ -25,7 +25,7 @@ public class Sudoku_AC3 {
 		return true;
 	}
 
-	public static boolean revise(int[] vars, boolean[][] varDomain, HashMap<Integer,Integer> currentConstraint){
+	public static boolean revise(boolean[][] varDomain, HashMap<Integer,Integer> currentConstraint){
 		boolean revised=false;
 		int x_i=-1, x_j=-1;
 
@@ -208,12 +208,5 @@ public class Sudoku_AC3 {
 			}
 		}
 		return constraintList;
-	}
-
-	public static void main(String[] args) {
-		int coordinates[]=convertTo2D(11);
-		ArrayList<HashMap<Integer,Integer>> constraintList=buildConstraints(-1,-1);
-	    System.out.println(String.valueOf(coordinates[0])+" "+String.valueOf(coordinates[1]));
-	    System.out.println(String.valueOf(convertToLinear(new int[]{1,2})));
 	}
 }

@@ -42,7 +42,18 @@ public class SudokuIO {
           }
         }
       }
-      Sudoku_AC3.runAC3(vars, varDomain);
+      Sudoku_AC3.runAC3(varDomain);
+      int count=0;
+      for (int i=0; i<81;i++){
+        count+=Sudoku_NakedVariable.numberOfDomainValues(varDomain,i);
+      }
+      System.out.println(count);
+      Sudoku_NakedVariable.runNakedVariable(varDomain);
+      count=0;
+      for (int i=0; i<81;i++){
+        count+=Sudoku_NakedVariable.numberOfDomainValues(varDomain,i);
+      }
+      System.out.println(count);
      
       file.close();
     }
